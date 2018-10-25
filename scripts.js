@@ -44,18 +44,20 @@ var weapons = [
 
 for (i = 1; i < 101; i++) {
     var h3 = $(`<h3 class=accusation id=${i}>Accusation ${i}</h3>`)
-    $('body').append(h3)
-    var h3Numb = $('h3').attr('id')
+    $('body').append(h3);
     var accObject = {
-        num: h3Numb,
+        num: i,
         friend: friends[Math.floor(Math.random() * friends.length)],
         weapon: weapons[Math.floor(Math.random() * weapons.length)],
         location: locations[Math.floor(Math.random() * locations.length)]
     };
+    $(this.h3).click(alertInvestigator.bind(accObject));
+    
 };
-$('h3').click(alertInvestigator.bind(accObject));
+
 function alertInvestigator() {
     alert(`Accusation ${this.num}: I accuse ${this.friend}, with the ${this.weapon} in the ${this.location}!`)
+    return;
 };
 
 
